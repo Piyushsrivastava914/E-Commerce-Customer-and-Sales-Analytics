@@ -1,0 +1,768 @@
+{
+ "kpis": {
+  "total_net_revenue": 9718090.91,
+  "total_orders": 31332,
+  "aov": 310.17,
+  "overall_margin_pct": 41.88,
+  "returning_customer_revenue_pct": 84.0,
+  "overall_clv": 1943.62,
+  "repeat_purchase_rate_pct": 75.84,
+  "churn_rate_180d_pct": 68.94,
+  "overall_return_rate_pct": 5.03,
+  "top2_segment_revenue_share_pct": 77.5,
+  "top2_segment_customer_share_pct": 40.0,
+  "margin_point_gap_high_vs_full": 26.9,
+  "margin_relative_pct_lower": 57.3
+ },
+ "monthly_revenue": [
+  {
+   "month": "2023-01",
+   "net_revenue": 53886.52,
+   "orders": 160
+  },
+  {
+   "month": "2023-02",
+   "net_revenue": 54450.48,
+   "orders": 189
+  },
+  {
+   "month": "2023-03",
+   "net_revenue": 82292.9,
+   "orders": 244
+  },
+  {
+   "month": "2023-04",
+   "net_revenue": 94803.71,
+   "orders": 307
+  },
+  {
+   "month": "2023-05",
+   "net_revenue": 102652.66,
+   "orders": 360
+  },
+  {
+   "month": "2023-06",
+   "net_revenue": 134799.15,
+   "orders": 397
+  },
+  {
+   "month": "2023-07",
+   "net_revenue": 142391.81,
+   "orders": 481
+  },
+  {
+   "month": "2023-08",
+   "net_revenue": 159770.24,
+   "orders": 526
+  },
+  {
+   "month": "2023-09",
+   "net_revenue": 152094.92,
+   "orders": 522
+  },
+  {
+   "month": "2023-10",
+   "net_revenue": 179649.59,
+   "orders": 603
+  },
+  {
+   "month": "2023-11",
+   "net_revenue": 201526.49,
+   "orders": 660
+  },
+  {
+   "month": "2023-12",
+   "net_revenue": 227123.97,
+   "orders": 679
+  },
+  {
+   "month": "2024-01",
+   "net_revenue": 222538.03,
+   "orders": 699
+  },
+  {
+   "month": "2024-02",
+   "net_revenue": 210771.21,
+   "orders": 684
+  },
+  {
+   "month": "2024-03",
+   "net_revenue": 217961.73,
+   "orders": 698
+  },
+  {
+   "month": "2024-04",
+   "net_revenue": 227844.77,
+   "orders": 739
+  },
+  {
+   "month": "2024-05",
+   "net_revenue": 226312.51,
+   "orders": 778
+  },
+  {
+   "month": "2024-06",
+   "net_revenue": 231008.24,
+   "orders": 768
+  },
+  {
+   "month": "2024-07",
+   "net_revenue": 251659.66,
+   "orders": 851
+  },
+  {
+   "month": "2024-08",
+   "net_revenue": 228605.35,
+   "orders": 789
+  },
+  {
+   "month": "2024-09",
+   "net_revenue": 250390.46,
+   "orders": 825
+  },
+  {
+   "month": "2024-10",
+   "net_revenue": 249872.96,
+   "orders": 816
+  },
+  {
+   "month": "2024-11",
+   "net_revenue": 257824.52,
+   "orders": 885
+  },
+  {
+   "month": "2024-12",
+   "net_revenue": 294191.8,
+   "orders": 893
+  },
+  {
+   "month": "2025-01",
+   "net_revenue": 236557.32,
+   "orders": 786
+  },
+  {
+   "month": "2025-02",
+   "net_revenue": 239649.25,
+   "orders": 724
+  },
+  {
+   "month": "2025-03",
+   "net_revenue": 254469.92,
+   "orders": 826
+  },
+  {
+   "month": "2025-04",
+   "net_revenue": 247281.23,
+   "orders": 783
+  },
+  {
+   "month": "2025-05",
+   "net_revenue": 267348.31,
+   "orders": 857
+  },
+  {
+   "month": "2025-06",
+   "net_revenue": 249955.38,
+   "orders": 799
+  },
+  {
+   "month": "2025-07",
+   "net_revenue": 255890.26,
+   "orders": 831
+  },
+  {
+   "month": "2025-08",
+   "net_revenue": 263919.63,
+   "orders": 826
+  },
+  {
+   "month": "2025-09",
+   "net_revenue": 221673.57,
+   "orders": 725
+  },
+  {
+   "month": "2025-10",
+   "net_revenue": 268320.36,
+   "orders": 845
+  },
+  {
+   "month": "2025-11",
+   "net_revenue": 315425.9,
+   "orders": 1000
+  },
+  {
+   "month": "2025-12",
+   "net_revenue": 335256.57,
+   "orders": 1074
+  },
+  {
+   "month": "2026-01",
+   "net_revenue": 277984.1,
+   "orders": 860
+  },
+  {
+   "month": "2026-02",
+   "net_revenue": 213088.68,
+   "orders": 749
+  },
+  {
+   "month": "2026-03",
+   "net_revenue": 276382.82,
+   "orders": 850
+  },
+  {
+   "month": "2026-04",
+   "net_revenue": 255834.17,
+   "orders": 815
+  },
+  {
+   "month": "2026-05",
+   "net_revenue": 283899.37,
+   "orders": 878
+  },
+  {
+   "month": "2026-06",
+   "net_revenue": 226137.55,
+   "orders": 769
+  },
+  {
+   "month": "2026-07",
+   "net_revenue": 304644.99,
+   "orders": 894
+  },
+  {
+   "month": "2026-08",
+   "net_revenue": 269947.85,
+   "orders": 888
+  }
+ ],
+ "category_revenue": [
+  {
+   "category": "Furniture",
+   "net_revenue": 3110686.62,
+   "profit": 1256608.48,
+   "margin_pct": 40.4
+  },
+  {
+   "category": "Electronics",
+   "net_revenue": 1885729.39,
+   "profit": 581417.7,
+   "margin_pct": 30.83
+  },
+  {
+   "category": "Sports & Outdoors",
+   "net_revenue": 1161830.73,
+   "profit": 525413.97,
+   "margin_pct": 45.22
+  },
+  {
+   "category": "Home & Kitchen",
+   "net_revenue": 970308.48,
+   "profit": 418283.33,
+   "margin_pct": 43.11
+  },
+  {
+   "category": "Footwear",
+   "net_revenue": 907277.01,
+   "profit": 459392.78,
+   "margin_pct": 50.63
+  },
+  {
+   "category": "Apparel & Clothing",
+   "net_revenue": 468032.59,
+   "profit": 254788.36,
+   "margin_pct": 54.44
+  },
+  {
+   "category": "Beauty & Personal Care",
+   "net_revenue": 384360.36,
+   "profit": 225469.13,
+   "margin_pct": 58.66
+  },
+  {
+   "category": "Toys & Games",
+   "net_revenue": 356691.17,
+   "profit": 167170.85,
+   "margin_pct": 46.87
+  },
+  {
+   "category": "Grocery & Gourmet",
+   "net_revenue": 265007.8,
+   "profit": 95822.91,
+   "margin_pct": 36.16
+  },
+  {
+   "category": "Books & Media",
+   "net_revenue": 208166.76,
+   "profit": 85603.36,
+   "margin_pct": 41.12
+  }
+ ],
+ "rfm_segments": [
+  {
+   "segment": "Loyal Customers",
+   "customers": 1114,
+   "avg_clv": 3522.06,
+   "total_revenue": 3923572.23,
+   "pct_customers": 22.3,
+   "pct_revenue": 40.4
+  },
+  {
+   "segment": "Champions",
+   "customers": 886,
+   "avg_clv": 4069.81,
+   "total_revenue": 3605856.05,
+   "pct_customers": 17.7,
+   "pct_revenue": 37.1
+  },
+  {
+   "segment": "Need Attention",
+   "customers": 970,
+   "avg_clv": 992.86,
+   "total_revenue": 963070.0,
+   "pct_customers": 19.4,
+   "pct_revenue": 9.9
+  },
+  {
+   "segment": "At Risk",
+   "customers": 373,
+   "avg_clv": 1231.3,
+   "total_revenue": 459274.84,
+   "pct_customers": 7.5,
+   "pct_revenue": 4.7
+  },
+  {
+   "segment": "Hibernating",
+   "customers": 962,
+   "avg_clv": 446.2,
+   "total_revenue": 429248.22,
+   "pct_customers": 19.2,
+   "pct_revenue": 4.4
+  },
+  {
+   "segment": "New / Promising",
+   "customers": 695,
+   "avg_clv": 484.99,
+   "total_revenue": 337069.57,
+   "pct_customers": 13.9,
+   "pct_revenue": 3.5
+  }
+ ],
+ "cohort_heatmap": [
+  {
+   "cohort": "2023-01",
+   "values": [
+    100.0,
+    32.5,
+    29.3,
+    36.6,
+    34.1,
+    25.2,
+    31.7,
+    25.2,
+    18.7,
+    21.1
+   ]
+  },
+  {
+   "cohort": "2023-04",
+   "values": [
+    100.0,
+    33.3,
+    32.4,
+    35.2,
+    40.0,
+    37.1,
+    32.4,
+    32.4,
+    31.4,
+    31.4
+   ]
+  },
+  {
+   "cohort": "2023-07",
+   "values": [
+    100.0,
+    35.7,
+    38.1,
+    37.3,
+    30.2,
+    30.2,
+    34.1,
+    31.0,
+    27.8,
+    29.4
+   ]
+  },
+  {
+   "cohort": "2023-10",
+   "values": [
+    100.0,
+    32.3,
+    36.1,
+    35.3,
+    27.1,
+    30.1,
+    34.6,
+    24.1,
+    26.3,
+    24.1
+   ]
+  },
+  {
+   "cohort": "2024-01",
+   "values": [
+    100.0,
+    30.3,
+    29.4,
+    29.4,
+    28.6,
+    30.3,
+    28.6,
+    31.1,
+    26.9,
+    21.0
+   ]
+  },
+  {
+   "cohort": "2024-04",
+   "values": [
+    100.0,
+    32.3,
+    40.3,
+    34.7,
+    26.6,
+    35.5,
+    31.5,
+    33.1,
+    33.1,
+    30.6
+   ]
+  },
+  {
+   "cohort": "2024-07",
+   "values": [
+    100.0,
+    34.6,
+    27.9,
+    25.7,
+    27.9,
+    30.1,
+    24.3,
+    19.1,
+    18.4,
+    16.9
+   ]
+  },
+  {
+   "cohort": "2024-10",
+   "values": [
+    100.0,
+    42.2,
+    30.5,
+    30.5,
+    28.1,
+    25.0,
+    28.1,
+    26.6,
+    22.7,
+    23.4
+   ]
+  },
+  {
+   "cohort": "2025-01",
+   "values": [
+    100.0,
+    31.3,
+    27.3,
+    30.3,
+    29.3,
+    22.2,
+    21.2,
+    29.3,
+    28.3,
+    26.3
+   ]
+  },
+  {
+   "cohort": "2025-04",
+   "values": [
+    100.0,
+    35.6,
+    35.6,
+    37.8,
+    37.0,
+    27.4,
+    29.6,
+    39.3,
+    35.6,
+    25.2
+   ]
+  },
+  {
+   "cohort": "2025-07",
+   "values": [
+    100.0,
+    27.9,
+    32.7,
+    40.4,
+    43.3,
+    43.3,
+    27.9,
+    26.9,
+    31.7,
+    23.1
+   ]
+  },
+  {
+   "cohort": "2025-10",
+   "values": [
+    100.0,
+    37.4,
+    40.4,
+    32.3,
+    24.2,
+    26.3,
+    31.3,
+    31.3,
+    23.2,
+    28.3
+   ]
+  }
+ ],
+ "avg_retention_curve": [
+  100.0,
+  33.8,
+  33.1,
+  33.2,
+  31.1,
+  30.3,
+  28.6,
+  26.8,
+  25.8
+ ],
+ "discount_bands": [
+  {
+   "band": "0% (full price)",
+   "net_revenue": 4704881.22,
+   "profit": 2206068.06,
+   "items": 25428,
+   "margin_pct": 46.89
+  },
+  {
+   "band": "1-10%",
+   "net_revenue": 2514107.99,
+   "profit": 1100997.65,
+   "items": 14644,
+   "margin_pct": 43.79
+  },
+  {
+   "band": "11-25%",
+   "net_revenue": 1735413.89,
+   "profit": 609974.46,
+   "items": 11659,
+   "margin_pct": 35.15
+  },
+  {
+   "band": "26-40%",
+   "net_revenue": 763687.81,
+   "profit": 152930.7,
+   "items": 6070,
+   "margin_pct": 20.03
+  }
+ ],
+ "channel_performance": [
+  {
+   "acquisition_channel": "Referral",
+   "customers": 427,
+   "avg_orders": 7.96,
+   "avg_ltv": 2353.1,
+   "pct_one_and_done": 14.3,
+   "cac": 55.39,
+   "ltv_cac_ratio": 42.48
+  },
+  {
+   "acquisition_channel": "Organic Search",
+   "customers": 1727,
+   "avg_orders": 6.9,
+   "avg_ltv": 2147.63,
+   "pct_one_and_done": 20.6,
+   "cac": 41.14,
+   "ltv_cac_ratio": 52.2
+  },
+  {
+   "acquisition_channel": "Direct",
+   "customers": 1008,
+   "avg_orders": 6.39,
+   "avg_ltv": 2026.06,
+   "pct_one_and_done": 22.4,
+   "cac": NaN,
+   "ltv_cac_ratio": NaN
+  },
+  {
+   "acquisition_channel": "Email Marketing",
+   "customers": 609,
+   "avg_orders": 6.78,
+   "avg_ltv": 1942.1,
+   "pct_one_and_done": 23.0,
+   "cac": 71.6,
+   "ltv_cac_ratio": 27.12
+  },
+  {
+   "acquisition_channel": "Paid Social",
+   "customers": 1229,
+   "avg_orders": 4.43,
+   "avg_ltv": 1447.8,
+   "pct_one_and_done": 34.6,
+   "cac": 309.01,
+   "ltv_cac_ratio": 4.69
+  }
+ ],
+ "return_rate_by_category": [
+  {
+   "category": "Apparel & Clothing",
+   "items_sold": 5728,
+   "returned": 626,
+   "return_rate_pct": 10.93
+  },
+  {
+   "category": "Footwear",
+   "items_sold": 5935,
+   "returned": 605,
+   "return_rate_pct": 10.19
+  },
+  {
+   "category": "Furniture",
+   "items_sold": 5980,
+   "returned": 433,
+   "return_rate_pct": 7.24
+  },
+  {
+   "category": "Electronics",
+   "items_sold": 5242,
+   "returned": 265,
+   "return_rate_pct": 5.06
+  },
+  {
+   "category": "Sports & Outdoors",
+   "items_sold": 5689,
+   "returned": 251,
+   "return_rate_pct": 4.41
+  },
+  {
+   "category": "Home & Kitchen",
+   "items_sold": 5709,
+   "returned": 223,
+   "return_rate_pct": 3.91
+  },
+  {
+   "category": "Toys & Games",
+   "items_sold": 6066,
+   "returned": 210,
+   "return_rate_pct": 3.46
+  },
+  {
+   "category": "Beauty & Personal Care",
+   "items_sold": 5747,
+   "returned": 139,
+   "return_rate_pct": 2.42
+  },
+  {
+   "category": "Books & Media",
+   "items_sold": 6067,
+   "returned": 100,
+   "return_rate_pct": 1.65
+  },
+  {
+   "category": "Grocery & Gourmet",
+   "items_sold": 5638,
+   "returned": 58,
+   "return_rate_pct": 1.03
+  }
+ ],
+ "top_return_products": [
+  {
+   "product_name": "Denim Jacket Deluxe",
+   "category": "Apparel & Clothing",
+   "units_sold": 107,
+   "returned": 19,
+   "return_rate_pct": 17.8
+  },
+  {
+   "product_name": "Cotton T-Shirt Deluxe",
+   "category": "Apparel & Clothing",
+   "units_sold": 119,
+   "returned": 20,
+   "return_rate_pct": 16.8
+  },
+  {
+   "product_name": "Chino Shorts Max",
+   "category": "Apparel & Clothing",
+   "units_sold": 113,
+   "returned": 19,
+   "return_rate_pct": 16.8
+  },
+  {
+   "product_name": "Dress Shoes Classic",
+   "category": "Footwear",
+   "units_sold": 204,
+   "returned": 33,
+   "return_rate_pct": 16.2
+  },
+  {
+   "product_name": "Wool Sweater Classic",
+   "category": "Apparel & Clothing",
+   "units_sold": 127,
+   "returned": 20,
+   "return_rate_pct": 15.7
+  },
+  {
+   "product_name": "Rain Jacket Pro",
+   "category": "Apparel & Clothing",
+   "units_sold": 125,
+   "returned": 19,
+   "return_rate_pct": 15.2
+  },
+  {
+   "product_name": "Summer Dress Plus",
+   "category": "Apparel & Clothing",
+   "units_sold": 115,
+   "returned": 17,
+   "return_rate_pct": 14.8
+  },
+  {
+   "product_name": "Running Shoes Pro",
+   "category": "Footwear",
+   "units_sold": 215,
+   "returned": 31,
+   "return_rate_pct": 14.4
+  }
+ ],
+ "delivery_by_shipping_method": [
+  {
+   "shipping_method": "Express",
+   "orders": 7815,
+   "avg_days": 2.85,
+   "pct_on_time": 63.4,
+   "pct_delayed": 4.6
+  },
+  {
+   "shipping_method": "Same-Day",
+   "orders": 3094,
+   "avg_days": 1.18,
+   "pct_on_time": 65.0,
+   "pct_delayed": 2.5
+  },
+  {
+   "shipping_method": "Standard",
+   "orders": 20423,
+   "avg_days": 6.53,
+   "pct_on_time": 61.1,
+   "pct_delayed": 7.1
+  }
+ ],
+ "return_rate_on_time_pct": 4.94,
+ "return_rate_delayed_pct": 6.55,
+ "new_customer_revenue_pct": 16.0,
+ "returning_customer_revenue_pct": 84.0
+}

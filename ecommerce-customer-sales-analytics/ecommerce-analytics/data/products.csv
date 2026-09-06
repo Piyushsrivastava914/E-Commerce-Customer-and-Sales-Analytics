@@ -1,0 +1,295 @@
+product_id,product_name,category,list_price,unit_cost
+1,Smart Watch 2.0,Electronics,363.59,223.99
+2,Gaming Mouse,Electronics,162.08,101.56
+3,USB-C Hub Classic,Electronics,566.32,363.78
+4,Bluetooth Speaker,Electronics,82.01,54.76
+5,USB-C Hub Mini,Electronics,454.26,296.77
+6,Bluetooth Speaker Classic,Electronics,214.0,127.2
+7,Mechanical Keyboard Mini,Electronics,107.52,60.04
+8,HD Webcam Plus,Electronics,437.42,283.12
+9,Tablet Stand Max,Electronics,583.55,380.76
+10,Fitness Tracker 2.0,Electronics,311.99,178.21
+11,Wireless Earbuds Pro,Electronics,380.8,252.23
+12,USB-C Hub 2.0,Electronics,311.98,181.78
+13,Fitness Tracker Plus,Electronics,233.74,135.11
+14,Fitness Tracker Pro,Electronics,572.8,385.14
+15,Gaming Mouse Max,Electronics,552.32,349.21
+16,HD Webcam Max,Electronics,300.83,172.04
+17,Wireless Charging Pad Pro,Electronics,227.34,154.63
+18,Action Camera Lite,Electronics,486.96,286.18
+19,Smart Watch,Electronics,155.91,97.97
+20,Portable Charger 2.0,Electronics,61.07,39.62
+21,Smart Watch Max,Electronics,492.37,334.45
+22,Wireless Charging Pad,Electronics,326.63,187.35
+23,Wireless Earbuds Classic,Electronics,400.95,270.81
+24,Noise-Cancelling Headphones,Electronics,111.6,69.57
+25,Fitness Tracker Deluxe,Electronics,369.86,250.61
+26,Portable Charger Plus,Electronics,558.41,363.89
+27,Noise-Cancelling Headphones Max,Electronics,418.57,270.57
+28,Action Camera Max,Electronics,248.41,159.3
+29,Wireless Charging Pad Max,Electronics,233.45,156.31
+30,Portable Charger Lite,Electronics,279.12,164.33
+31,Action Camera 2.0,Electronics,52.46,29.41
+32,Tablet Stand Plus,Electronics,339.04,213.92
+33,Mechanical Keyboard,Electronics,19.21,12.41
+34,Smart Home Hub Classic,Electronics,49.44,28.0
+35,Smart Home Hub Pro,Electronics,33.38,19.99
+36,HD Webcam,Electronics,315.78,187.11
+37,Wireless Charging Pad Classic,Electronics,298.97,186.82
+38,Smart Home Hub Mini,Electronics,438.16,292.43
+39,Wireless Earbuds Mini,Electronics,352.08,207.07
+40,Smart Home Hub Plus,Electronics,291.69,177.49
+41,Laptop Stand,Electronics,70.18,44.9
+42,Laptop Stand Mini,Electronics,222.26,135.35
+43,Linen Shirt,Apparel & Clothing,13.1,5.64
+44,Denim Jacket Lite,Apparel & Clothing,78.43,30.31
+45,Chino Shorts Deluxe,Apparel & Clothing,75.44,31.72
+46,Chino Shorts Max,Apparel & Clothing,27.63,11.25
+47,Wool Sweater Deluxe,Apparel & Clothing,20.12,8.02
+48,Summer Dress Pro,Apparel & Clothing,45.63,18.93
+49,Yoga Leggings 2.0,Apparel & Clothing,76.1,30.7
+50,Hoodie Deluxe,Apparel & Clothing,128.09,57.1
+51,Chino Shorts,Apparel & Clothing,74.42,32.31
+52,Denim Jacket,Apparel & Clothing,77.44,35.33
+53,Slim-Fit Jeans 2.0,Apparel & Clothing,24.22,10.94
+54,Denim Jacket Pro,Apparel & Clothing,43.21,19.56
+55,Puffer Vest,Apparel & Clothing,99.61,38.95
+56,Linen Shirt Pro,Apparel & Clothing,45.25,17.91
+57,Rain Jacket Mini,Apparel & Clothing,52.46,22.86
+58,Cotton T-Shirt Deluxe,Apparel & Clothing,112.64,47.36
+59,Yoga Leggings Mini,Apparel & Clothing,41.63,18.91
+60,Slim-Fit Jeans Classic,Apparel & Clothing,17.99,7.76
+61,Wool Sweater Lite,Apparel & Clothing,109.86,41.93
+62,Wool Sweater Classic,Apparel & Clothing,51.36,19.98
+63,Denim Jacket Deluxe,Apparel & Clothing,127.62,49.97
+64,Cotton T-Shirt Mini,Apparel & Clothing,64.14,28.05
+65,Linen Shirt Lite,Apparel & Clothing,78.19,30.29
+66,Hoodie Classic,Apparel & Clothing,123.52,53.86
+67,Wool Sweater Pro,Apparel & Clothing,29.59,11.27
+68,Hoodie Mini,Apparel & Clothing,55.57,23.58
+69,Puffer Vest 2.0,Apparel & Clothing,62.71,23.92
+70,Hoodie Max,Apparel & Clothing,55.03,25.11
+71,Rain Jacket Pro,Apparel & Clothing,126.72,48.32
+72,Linen Shirt Mini,Apparel & Clothing,54.22,23.6
+73,Flannel Shirt Deluxe,Apparel & Clothing,90.7,36.98
+74,Slim-Fit Jeans Plus,Apparel & Clothing,78.07,35.25
+75,Yoga Leggings Max,Apparel & Clothing,126.91,55.96
+76,Cotton T-Shirt Lite,Apparel & Clothing,121.24,48.24
+77,Hoodie Plus,Apparel & Clothing,31.18,13.88
+78,Cotton T-Shirt 2.0,Apparel & Clothing,32.89,13.57
+79,Yoga Leggings Lite,Apparel & Clothing,33.16,15.11
+80,Linen Shirt Deluxe,Apparel & Clothing,104.32,43.04
+81,Slim-Fit Jeans Pro,Apparel & Clothing,91.05,40.04
+82,Denim Jacket Mini,Apparel & Clothing,41.28,16.16
+83,Rain Jacket 2.0,Apparel & Clothing,94.75,38.86
+84,Hoodie 2.0,Apparel & Clothing,16.57,6.92
+85,Denim Jacket Max,Apparel & Clothing,35.55,16.18
+86,Hoodie Pro,Apparel & Clothing,53.26,23.8
+87,Summer Dress Plus,Apparel & Clothing,114.82,45.55
+88,Wool Sweater Mini,Apparel & Clothing,89.88,36.98
+89,Hiking Boots Pro,Footwear,154.65,71.08
+90,Running Shoes Pro,Footwear,78.17,34.77
+91,Running Shoes 2.0,Footwear,136.48,61.55
+92,Dress Shoes Classic,Footwear,155.97,76.64
+93,Hiking Boots Lite,Footwear,146.43,67.99
+94,Sandals Max,Footwear,71.82,33.38
+95,Slip-On Loafers Classic,Footwear,127.18,52.58
+96,Leather Boots Plus,Footwear,182.08,77.59
+97,Canvas Sneakers,Footwear,76.22,36.4
+98,Canvas Sneakers Pro,Footwear,49.31,20.18
+99,Sandals 2.0,Footwear,187.35,86.18
+100,Trail Runners Plus,Footwear,151.8,67.7
+101,Slip-On Loafers,Footwear,171.21,78.21
+102,Canvas Sneakers Classic,Footwear,143.53,63.09
+103,Hiking Boots Mini,Footwear,90.94,38.04
+104,Dress Shoes Deluxe,Footwear,138.46,67.2
+105,Trail Runners Deluxe,Footwear,166.97,80.93
+106,Dress Shoes Max,Footwear,153.44,65.17
+107,Leather Boots Deluxe,Footwear,157.68,73.74
+108,Dress Shoes,Footwear,101.65,46.27
+109,Slip-On Loafers 2.0,Footwear,176.38,73.36
+110,Leather Boots Pro,Footwear,47.0,21.0
+111,Leather Boots Lite,Footwear,112.64,51.29
+112,Hiking Boots Max,Footwear,77.35,36.58
+113,Canvas Sneakers Deluxe,Footwear,98.02,46.89
+114,Slip-On Loafers Lite,Footwear,172.18,76.35
+115,Storage Bin Set Mini,Home & Kitchen,59.84,28.13
+116,Throw Pillow Deluxe,Home & Kitchen,48.1,23.14
+117,Stainless Steel Water Bottle Max,Home & Kitchen,177.36,93.41
+118,Non-Stick Frying Pan Mini,Home & Kitchen,64.49,34.87
+119,Cutting Board,Home & Kitchen,201.72,97.92
+120,Blender,Home & Kitchen,161.81,88.31
+121,Throw Pillow Mini,Home & Kitchen,38.63,21.37
+122,Non-Stick Frying Pan Plus,Home & Kitchen,251.18,120.38
+123,Storage Bin Set 2.0,Home & Kitchen,16.42,8.22
+124,Vacuum Cleaner,Home & Kitchen,179.34,101.8
+125,Air Fryer 2.0,Home & Kitchen,109.16,59.2
+126,Knife Block Set Pro,Home & Kitchen,29.0,15.65
+127,Coffee Maker Classic,Home & Kitchen,166.81,79.83
+128,Air Fryer Pro,Home & Kitchen,203.12,113.02
+129,Non-Stick Frying Pan Classic,Home & Kitchen,160.1,76.94
+130,Ceramic Mug Set 2.0,Home & Kitchen,255.96,140.62
+131,Throw Pillow,Home & Kitchen,96.8,49.61
+132,Ceramic Mug Set,Home & Kitchen,102.64,53.44
+133,Coffee Maker Lite,Home & Kitchen,95.31,53.03
+134,Cutting Board Pro,Home & Kitchen,215.58,103.26
+135,Stainless Steel Water Bottle Plus,Home & Kitchen,250.2,133.63
+136,Storage Bin Set Pro,Home & Kitchen,217.18,117.62
+137,Non-Stick Frying Pan Max,Home & Kitchen,118.87,64.7
+138,Coffee Maker Deluxe,Home & Kitchen,251.37,124.7
+139,Knife Block Set 2.0,Home & Kitchen,212.05,111.11
+140,Air Fryer Classic,Home & Kitchen,130.87,67.18
+141,Blender Pro,Home & Kitchen,192.76,95.59
+142,Air Fryer Deluxe,Home & Kitchen,222.93,123.59
+143,Stainless Steel Water Bottle Lite,Home & Kitchen,31.67,17.73
+144,Non-Stick Frying Pan Lite,Home & Kitchen,70.97,36.64
+145,Storage Bin Set Plus,Home & Kitchen,162.58,82.5
+146,Stainless Steel Water Bottle 2.0,Home & Kitchen,17.17,9.56
+147,Cutting Board Mini,Home & Kitchen,55.46,27.18
+148,Air Fryer Max,Home & Kitchen,209.46,105.44
+149,Vacuum Cleaner Pro,Home & Kitchen,230.08,124.46
+150,Blender 2.0,Home & Kitchen,79.07,37.09
+151,Electric Toothbrush Lite,Beauty & Personal Care,47.78,17.94
+152,Perfume,Beauty & Personal Care,22.41,7.75
+153,Shampoo & Conditioner Set Deluxe,Beauty & Personal Care,89.75,33.95
+154,Electric Toothbrush 2.0,Beauty & Personal Care,79.17,29.49
+155,Lip Balm Set Mini,Beauty & Personal Care,12.59,4.91
+156,Lip Balm Set Classic,Beauty & Personal Care,10.77,3.81
+157,Sunscreen SPF50,Beauty & Personal Care,56.09,20.48
+158,Sunscreen SPF50 Classic,Beauty & Personal Care,94.46,33.16
+159,Perfume Deluxe,Beauty & Personal Care,74.04,28.73
+160,Hair Dryer Mini,Beauty & Personal Care,76.38,27.43
+161,Facial Cleanser Lite,Beauty & Personal Care,52.51,19.76
+162,Facial Cleanser Mini,Beauty & Personal Care,45.4,18.49
+163,Electric Toothbrush Pro,Beauty & Personal Care,94.11,34.37
+164,Hair Dryer 2.0,Beauty & Personal Care,61.27,23.79
+165,Facial Cleanser,Beauty & Personal Care,71.87,29.76
+166,Perfume Pro,Beauty & Personal Care,24.49,8.77
+167,Sunscreen SPF50 Mini,Beauty & Personal Care,64.78,22.93
+168,Perfume Max,Beauty & Personal Care,21.47,7.47
+169,Electric Toothbrush Classic,Beauty & Personal Care,6.24,2.35
+170,Hair Dryer Classic,Beauty & Personal Care,58.85,21.43
+171,Facial Cleanser Plus,Beauty & Personal Care,26.6,10.53
+172,Facial Cleanser Max,Beauty & Personal Care,68.57,25.82
+173,Moisturizing Cream,Beauty & Personal Care,67.18,27.69
+174,Hair Dryer Lite,Beauty & Personal Care,76.12,29.65
+175,Hair Dryer Max,Beauty & Personal Care,64.85,26.78
+176,Sunscreen SPF50 Deluxe,Beauty & Personal Care,43.84,16.81
+177,Lip Balm Set 2.0,Beauty & Personal Care,63.64,26.16
+178,Sunscreen SPF50 Pro,Beauty & Personal Care,79.57,27.64
+179,Camping Tent Lite,Sports & Outdoors,170.72,87.45
+180,Bicycle Helmet Lite,Sports & Outdoors,164.53,81.31
+181,Yoga Mat Classic,Sports & Outdoors,26.0,12.39
+182,Camping Tent Pro,Sports & Outdoors,50.61,24.23
+183,Camping Tent Plus,Sports & Outdoors,283.06,141.1
+184,Camping Tent,Sports & Outdoors,18.95,9.72
+185,Insulated Water Bottle Mini,Sports & Outdoors,257.79,134.3
+186,Yoga Mat,Sports & Outdoors,106.33,47.99
+187,Yoga Mat Deluxe,Sports & Outdoors,136.48,64.48
+188,Yoga Mat Plus,Sports & Outdoors,270.84,124.95
+189,Resistance Bands Deluxe,Sports & Outdoors,303.59,156.28
+190,Camping Tent Classic,Sports & Outdoors,57.73,31.36
+191,Yoga Mat Lite,Sports & Outdoors,100.48,52.3
+192,Camping Tent 2.0,Sports & Outdoors,138.8,69.16
+193,Sleeping Bag Pro,Sports & Outdoors,156.39,77.52
+194,Resistance Bands Max,Sports & Outdoors,54.84,25.72
+195,Bicycle Helmet Deluxe,Sports & Outdoors,195.81,102.73
+196,Insulated Water Bottle Deluxe,Sports & Outdoors,52.32,23.91
+197,Adjustable Dumbbell Set Max,Sports & Outdoors,249.53,133.61
+198,Adjustable Dumbbell Set,Sports & Outdoors,115.36,61.0
+199,Resistance Bands Classic,Sports & Outdoors,92.82,41.79
+200,Bicycle Helmet 2.0,Sports & Outdoors,235.08,125.47
+201,Camping Tent Deluxe,Sports & Outdoors,189.78,97.93
+202,Hiking Backpack Deluxe,Sports & Outdoors,278.23,137.63
+203,Yoga Mat Max,Sports & Outdoors,160.15,77.39
+204,Sleeping Bag Deluxe,Sports & Outdoors,246.49,120.22
+205,Resistance Bands,Sports & Outdoors,299.18,160.65
+206,Adjustable Dumbbell Set Pro,Sports & Outdoors,314.04,148.82
+207,Self-Help Book 2.0,Books & Media,41.43,20.72
+208,Bestselling Novel Classic,Books & Media,37.46,19.75
+209,Cookbook Mini,Books & Media,21.87,11.18
+210,Biography 2.0,Books & Media,27.65,15.41
+211,Children's Picture Book Deluxe,Books & Media,37.32,19.17
+212,Bestselling Novel 2.0,Books & Media,10.92,6.45
+213,Puzzle Book Max,Books & Media,30.93,16.13
+214,Puzzle Book Classic,Books & Media,41.77,21.33
+215,Puzzle Book Mini,Books & Media,25.06,13.1
+216,Cookbook Classic,Books & Media,17.45,8.66
+217,Biography Classic,Books & Media,37.77,22.44
+218,Graphic Novel Pro,Books & Media,33.07,16.94
+219,Cookbook Lite,Books & Media,24.34,12.97
+220,Self-Help Book,Books & Media,29.74,16.81
+221,Bestselling Novel Max,Books & Media,23.7,12.38
+222,Puzzle Book,Books & Media,39.28,20.3
+223,Bestselling Novel Pro,Books & Media,22.23,12.19
+224,Biography Plus,Books & Media,16.78,9.36
+225,Graphic Novel Max,Books & Media,29.27,17.68
+226,Graphic Novel 2.0,Books & Media,18.92,11.4
+227,Cookbook Deluxe,Books & Media,32.35,16.99
+228,Children's Picture Book,Books & Media,28.94,16.51
+229,Remote Control Car Max,Toys & Games,47.57,23.62
+230,1000-Piece Puzzle Deluxe,Toys & Games,66.49,32.45
+231,Action Figure,Toys & Games,79.55,41.55
+232,1000-Piece Puzzle Plus,Toys & Games,17.43,7.92
+233,Remote Control Car 2.0,Toys & Games,10.18,5.26
+234,1000-Piece Puzzle Max,Toys & Games,56.84,29.55
+235,Building Block Set,Toys & Games,27.26,11.94
+236,Action Figure Mini,Toys & Games,79.68,41.38
+237,Remote Control Car,Toys & Games,34.29,16.16
+238,Action Figure Classic,Toys & Games,20.16,10.54
+239,Plush Toy,Toys & Games,34.48,16.53
+240,Remote Control Car Mini,Toys & Games,16.46,8.51
+241,Building Block Set Classic,Toys & Games,19.8,9.42
+242,Building Block Set Pro,Toys & Games,66.33,33.39
+243,Action Figure Plus,Toys & Games,90.3,42.64
+244,Board Game Pro,Toys & Games,72.58,32.43
+245,Board Game,Toys & Games,44.09,19.47
+246,Board Game Plus,Toys & Games,50.57,23.83
+247,Action Figure Max,Toys & Games,90.78,39.5
+248,Plush Toy Pro,Toys & Games,40.24,19.1
+249,Remote Control Car Classic,Toys & Games,90.7,46.63
+250,Card Game 2.0,Toys & Games,16.64,8.28
+251,Card Game,Toys & Games,55.37,29.12
+252,Board Game Mini,Toys & Games,39.2,18.43
+253,Extra Virgin Olive Oil Mini,Grocery & Gourmet,61.67,33.62
+254,Granola Pack Deluxe,Grocery & Gourmet,51.78,33.35
+255,Organic Coffee Beans Mini,Grocery & Gourmet,35.81,21.31
+256,Herbal Tea Set Pro,Grocery & Gourmet,62.81,34.38
+257,Extra Virgin Olive Oil Pro,Grocery & Gourmet,33.22,19.54
+258,Dark Chocolate Bar Pack Max,Grocery & Gourmet,45.85,27.46
+259,Protein Powder Mini,Grocery & Gourmet,59.49,32.65
+260,Herbal Tea Set,Grocery & Gourmet,8.93,5.47
+261,Herbal Tea Set Plus,Grocery & Gourmet,8.01,4.59
+262,Extra Virgin Olive Oil Lite,Grocery & Gourmet,42.62,25.82
+263,Protein Powder Plus,Grocery & Gourmet,23.84,15.72
+264,Herbal Tea Set Lite,Grocery & Gourmet,36.36,21.61
+265,Herbal Tea Set Classic,Grocery & Gourmet,40.93,22.59
+266,Organic Coffee Beans Plus,Grocery & Gourmet,46.81,30.07
+267,Extra Virgin Olive Oil 2.0,Grocery & Gourmet,43.71,27.64
+268,Herbal Tea Set Max,Grocery & Gourmet,47.97,27.14
+269,Protein Powder 2.0,Grocery & Gourmet,31.54,17.9
+270,Herbal Tea Set 2.0,Grocery & Gourmet,24.67,14.66
+271,Granola Pack Max,Grocery & Gourmet,29.38,16.2
+272,Extra Virgin Olive Oil Plus,Grocery & Gourmet,30.03,18.61
+273,Assorted Nuts Pack Pro,Grocery & Gourmet,26.83,14.98
+274,Extra Virgin Olive Oil,Grocery & Gourmet,60.3,33.05
+275,Sofa Lite,Furniture,183.24,103.16
+276,Accent Table Lite,Furniture,653.31,342.94
+277,Bed Frame Plus,Furniture,642.36,352.28
+278,Accent Table Max,Furniture,442.26,232.21
+279,TV Stand Mini,Furniture,727.0,368.97
+280,Bookshelf Classic,Furniture,431.22,226.89
+281,TV Stand Deluxe,Furniture,657.42,360.61
+282,Accent Table,Furniture,647.09,323.54
+283,Sofa Pro,Furniture,399.69,224.2
+284,Bar Stool Set Pro,Furniture,47.0,24.82
+285,Bar Stool Set Max,Furniture,232.22,118.45
+286,Bar Stool Set 2.0,Furniture,272.52,144.73
+287,TV Stand,Furniture,47.03,27.14
+288,Sofa Mini,Furniture,199.88,107.3
+289,Sofa Classic,Furniture,680.34,374.21
+290,Bookshelf Mini,Furniture,798.35,465.98
+291,Bed Frame Classic,Furniture,105.59,62.28
+292,Bookshelf Max,Furniture,78.5,39.02
+293,Office Chair Mini,Furniture,878.26,518.03
+294,Accent Table 2.0,Furniture,563.94,314.72

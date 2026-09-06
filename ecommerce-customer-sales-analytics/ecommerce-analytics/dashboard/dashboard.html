@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-Commerce Customer &amp; Sales Analytics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+<style>
+  :root{
+    --navy:#0A2540; --navy-soft:#123A5E;
+    --blue-700:#145DA6; --blue-600:#1B6FC2; --blue-500:#3E82C9; --blue-300:#8FBEE8; --blue-100:#E3EEFC;
+    --line:#D7E4F5; --bg:#F4F8FD; --white:#FFFFFF; --text:#0A2540; --text-soft:#5A7290;
+    --font-ui:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+    --font-num:'IBM Plex Mono',ui-monospace,SFMono-Regular,monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;display:flex;min-height:100vh;background:var(--bg);font-family:var(--font-ui);color:var(--text);}
+  a{color:inherit;}
+
+  /* ---------- Sidebar ---------- */
+  .sidebar{width:246px;flex-shrink:0;background:var(--navy);color:#CBDCEF;position:sticky;top:0;height:100vh;
+           display:flex;flex-direction:column;padding:26px 0 18px;overflow-y:auto;}
+  .brand{padding:0 24px 22px;border-bottom:1px solid rgba(255,255,255,0.08);margin-bottom:10px;}
+  .brand .mark{width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,var(--blue-500),var(--blue-700));
+               display:flex;align-items:center;justify-content:center;font-family:var(--font-num);font-weight:700;color:white;font-size:15px;margin-bottom:12px;}
+  .brand h1{font-size:15px;line-height:1.3;margin:0 0 4px;color:white;font-weight:600;}
+  .brand p{font-size:11.5px;color:#8CA9C6;margin:0;}
+  nav{flex:1;padding-top:8px;}
+  .nav-item{display:flex;align-items:center;gap:12px;padding:12px 24px;cursor:pointer;font-size:14px;
+            border-left:3px solid transparent;color:#AFC6E0;transition:background .15s,color .15s;user-select:none;}
+  .nav-item svg{flex-shrink:0;opacity:.85;}
+  .nav-item:hover{color:white;background:rgba(255,255,255,0.05);}
+  .nav-item.active{color:white;background:rgba(255,255,255,0.08);border-left-color:var(--blue-500);font-weight:500;}
+  .sidebar-foot{padding:14px 24px 0;font-size:11px;color:#6E8AA8;border-top:1px solid rgba(255,255,255,0.08);margin-top:8px;}
+
+  /* ---------- Main ---------- */
+  .main{flex:1;min-width:0;padding:38px 44px 60px;max-width:1180px;}
+  .section{display:none;}
+  .section.active{display:block;animation:fadein .25s ease;}
+  @keyframes fadein{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
+  .section-head{margin-bottom:22px;}
+  .section-head h2{font-size:22px;margin:0 0 6px;font-weight:600;}
+  .section-head p{font-size:13.5px;color:var(--text-soft);margin:0;max-width:640px;line-height:1.5;}
+
+  /* ---------- KPI tiles (bento, not uniform cards) ---------- */
+  .kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .kpi-grid.with-hero{grid-template-columns:1.6fr 1fr 1fr 1fr;grid-template-rows:auto auto;}
+  .kpi-tile{background:var(--white);border:1px solid var(--line);border-left:4px solid var(--blue-600);padding:16px 18px;}
+  .kpi-tile.hero{grid-row:span 2;border-left-width:6px;padding:22px 24px;display:flex;flex-direction:column;justify-content:center;}
+  .kpi-value{font-family:var(--font-num);font-weight:600;font-variant-numeric:tabular-nums;display:block;color:var(--navy);}
+  .kpi-tile .kpi-value{font-size:21px;}
+  .kpi-tile.hero .kpi-value{font-size:38px;}
+  .kpi-label{font-size:12px;color:var(--text-soft);margin-top:5px;line-height:1.35;}
+  .kpi-tile.hero .kpi-label{font-size:12.5px;margin-top:8px;}
+  .kpi-delta{font-size:11.5px;margin-top:6px;font-weight:500;}
+
+  /* ---------- Panels ---------- */
+  .panel{background:var(--white);border:1px solid var(--line);padding:20px 22px 16px;margin-top:18px;}
+  .panel h3{margin:0 0 3px;font-size:14.5px;font-weight:600;}
+  .panel .sub{font-size:12px;color:var(--text-soft);margin-bottom:14px;}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .chart-wrap{position:relative;height:280px;}
+  .chart-wrap.short{height:220px;}
+
+  /* ---------- Findings callout ---------- */
+  .finding{background:var(--blue-100);border-left:4px solid var(--blue-700);padding:13px 18px;margin-top:16px;font-size:13px;line-height:1.6;}
+  .finding .tag{font-weight:600;color:var(--blue-700);margin-right:5px;}
+
+  /* ---------- Tables ---------- */
+  table{width:100%;border-collapse:collapse;font-size:13px;}
+  th{text-align:left;font-weight:600;color:var(--text-soft);font-size:11.5px;padding:8px 10px;border-bottom:1px solid var(--line);}
+  td{padding:8px 10px;border-bottom:1px solid #EEF4FB;font-variant-numeric:tabular-nums;}
+  tr:last-child td{border-bottom:none;}
+
+  /* ---------- Cohort heatmap ---------- */
+  .heatmap-wrap{overflow-x:auto;}
+  .heatmap{border-collapse:collapse;font-size:11.5px;}
+  .heatmap th{padding:6px 8px;font-size:10.5px;color:var(--text-soft);border:none;font-weight:500;text-align:center;}
+  .heatmap th.rowhead{text-align:left;}
+  .heatmap td{padding:0;border:none;text-align:center;}
+  .heatmap td.rowhead{text-align:left;padding:6px 10px;color:var(--text-soft);font-size:11px;white-space:nowrap;}
+  .hm-cell{width:52px;height:30px;display:flex;align-items:center;justify-content:center;font-family:var(--font-num);font-size:11px;}
+
+  @media (max-width:900px){
+    body{flex-direction:column;}
+    .sidebar{position:relative;height:auto;width:100%;flex-direction:row;overflow-x:auto;padding:14px 0;}
+    .brand{display:none;}
+    nav{display:flex;padding-top:0;}
+    .nav-item{flex-shrink:0;border-left:none;border-bottom:3px solid transparent;}
+    .nav-item.active{border-left:none;border-bottom-color:var(--blue-500);}
+    .sidebar-foot{display:none;}
+    .main{padding:24px 18px 40px;}
+    .kpi-grid, .kpi-grid.with-hero{grid-template-columns:1fr 1fr;}
+    .kpi-tile.hero{grid-row:auto;grid-column:span 2;}
+    .two-col{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+  <div class="brand">
+    <div class="mark">EC</div>
+    <h1>E-Commerce Customer &amp; Sales Analytics</h1>
+    <p>Jan 2023 – Aug 2026 · synthetic dataset</p>
+  </div>
+  <nav id="nav">
+    <div class="nav-item active" data-section="overview">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      Overview
+    </div>
+    <div class="nav-item" data-section="revenue">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-4"/></svg>
+      Revenue
+    </div>
+    <div class="nav-item" data-section="customers">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M2 21v-2a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v2"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      Customers
+    </div>
+    <div class="nav-item" data-section="retention">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v6h-6"/></svg>
+      Retention
+    </div>
+    <div class="nav-item" data-section="marketing">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg>
+      Marketing
+    </div>
+    <div class="nav-item" data-section="operations">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+      Operations
+    </div>
+  </nav>
+  <div class="sidebar-foot">Python · SQL · Power BI–style dashboard<br>github.com/Piyushsrivastava914</div>
+</aside>
+
+<main class="main">
+
+  <!-- ============ OVERVIEW ============ -->
+  <section class="section active" id="overview">
+    <div class="section-head">
+      <h2>Business Overview</h2>
+      <p>Headline health metrics across the full analysis window, before drilling into any one area.</p>
+    </div>
+    <div class="kpi-grid with-hero">
+      <div class="kpi-tile hero">
+        <span class="kpi-value" id="kpi-total-revenue">–</span>
+        <span class="kpi-label">Total net revenue, Jan 2023 – Aug 2026</span>
+      </div>
+      <div class="kpi-tile"><span class="kpi-value" id="kpi-total-orders">–</span><span class="kpi-label">Total orders</span></div>
+      <div class="kpi-tile"><span class="kpi-value" id="kpi-aov">–</span><span class="kpi-label">Average order value</span></div>
+      <div class="kpi-tile"><span class="kpi-value" id="kpi-margin">–</span><span class="kpi-label">Overall profit margin</span></div>
+      <div class="kpi-tile"><span class="kpi-value" id="kpi-repeat">–</span><span class="kpi-label">Repeat-purchase rate</span></div>
+      <div class="kpi-tile"><span class="kpi-value" id="kpi-clv">–</span><span class="kpi-label">Average customer lifetime value</span></div>
+      <div class="kpi-tile"><span class="kpi-value" id="kpi-returning-rev">–</span><span class="kpi-label">Of revenue from returning customers</span></div>
+    </div>
+    <div class="panel">
+      <h3>Monthly net revenue</h3>
+      <div class="sub">Jan 2023 – Aug 2026, with a consistent Nov/Dec holiday lift each year.</div>
+      <div class="chart-wrap"><canvas id="chart-overview-trend"></canvas></div>
+    </div>
+    <div class="finding">
+      <span class="tag">Finding —</span> the top two RFM segments (<b>Champions</b> and <b>Loyal Customers</b>) are
+      <b id="find-ov-cust-pct">–</b> of customers but generate <b id="find-ov-rev-pct">–</b> of net revenue.
+      <span class="tag" style="margin-left:6px;">Recommendation —</span> protect that base with a loyalty/VIP
+      program before spending further on new acquisition. See <i>Customers</i> for detail.
+    </div>
+  </section>
+
+  <!-- ============ REVENUE ============ -->
+  <section class="section" id="revenue">
+    <div class="section-head">
+      <h2>Revenue</h2>
+      <p>Trend, category mix, and profitability. All figures are net of discounts.</p>
+    </div>
+    <div class="kpi-grid">
+      <div class="kpi-tile"><span class="kpi-value" id="rev-kpi-total">–</span><span class="kpi-label">Total net revenue</span></div>
+      <div class="kpi-tile"><span class="kpi-value" id="rev-kpi-aov">–</span><span class="kpi-label">Average order value</span></div>
+      <div class="kpi-tile"><span class="kpi-value" id="rev-kpi-margin">–</span><span class="kpi-label">Overall margin</span></div>
+      <div class="kpi-tile"><span class="kpi-value" id="rev-kpi-topcat">–</span><span class="kpi-label">Top category by revenue</span></div>
+    </div>
+    <div class="panel">
+      <h3>Monthly net revenue &amp; order count</h3>
+      <div class="chart-wrap"><canvas id="chart-rev-trend"></canvas></div>
+    </div>
+    <div class="panel">
+      <h3>Net revenue by category</h3>
+      <div class="sub">Furniture and Electronics lead on revenue but carry the thinnest margins — see bar color.</div>
+      <div class="chart-wrap"><canvas id="chart-rev-category"></canvas></div>
+    </div>
+  </section>
+
+  <!-- ============ CUSTOMERS ============ -->
+  <section class="section" id="customers">
+    <div class="section-head">
+      <h2>Customers</h2>
+      <p>New vs. returning revenue, RFM segmentation, and customer lifetime value.</p>
+    </div>
+    <div class="kpi-grid">
+      <div class="kpi-tile"><span class="kpi-value" id="cust-kpi-clv">–</span><span class="kpi-label">Average CLV (historical net revenue)</span></div>
+      <div class="kpi-tile"><span class="kpi-value" id="cust-kpi-repeat">–</span><span class="kpi-label">Repeat-purchase rate</span></div>
+      <div class="kpi-tile"><span class="kpi-value" id="cust-kpi-returning">–</span><span class="kpi-label">Revenue from returning customers</span></div>
+      <div class="kpi-tile"><span class="kpi-value" id="cust-kpi-new">–</span><span class="kpi-label">Revenue from first-time orders</span></div>
+    </div>
+    <div class="two-col">
+      <div class="panel">
+        <h3>New vs. returning revenue</h3>
+        <div class="chart-wrap short"><canvas id="chart-cust-newret"></canvas></div>
+      </div>
+      <div class="panel">
+        <h3>Revenue share by RFM segment</h3>
+        <div class="sub">% of customers (light) vs. % of revenue (dark) per segment.</div>
+        <div class="chart-wrap short"><canvas id="chart-cust-rfm"></canvas></div>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>Segment detail</h3>
+      <table id="table-rfm"><thead><tr><th>Segment</th><th>Customers</th><th>% of customers</th><th>Avg CLV</th><th>% of revenue</th></tr></thead><tbody></tbody></table>
+    </div>
+    <div class="finding">
+      <span class="tag">Finding —</span> <b>Hibernating</b>, <b>New/Promising</b>, and <b>Need Attention</b> customers
+      combined are over half the customer base but a small share of revenue — mostly single-purchase shoppers who
+      never came back. <span class="tag" style="margin-left:6px;">Recommendation —</span> a second-purchase incentive
+      (time-boxed discount or free-shipping code after order #1) is the highest-leverage lever here, since converting
+      even a modest share into repeat buyers compounds through CLV.
+    </div>
+  </section>
+
+  <!-- ============ RETENTION ============ -->
+  <section class="section" id="retention">
+    <div class="section-head">
+      <h2>Retention</h2>
+      <p>Monthly cohort retention and churn. Recent cohorts are naturally incomplete — they haven't had time to return yet.</p>
+    </div>
+    <div class="kpi-grid">
+      <div class="kpi-tile"><span class="kpi-value" id="ret-kpi-m1">–</span><span class="kpi-label">Month-1 retention (mature cohorts avg)</span></div>
+      <div class="kpi-tile"><span class="kpi-value" id="ret-kpi-m3">–</span><span class="kpi-label">Month-3 retention</span></div>
+      <div class="kpi-tile"><span class="kpi-value" id="ret-kpi-m6">–</span><span class="kpi-label">Month-6 retention</span></div>
+      <div class="kpi-tile"><span class="kpi-value" id="ret-kpi-churn">–</span><span class="kpi-label">180-day churn rate</span></div>
+    </div>
+    <div class="panel">
+      <h3>Monthly cohort retention</h3>
+      <div class="sub">Each row is a cohort of customers acquired that month; each column is months since their first order. Sampled every 3rd cohort for readability.</div>
+      <div class="heatmap-wrap"><table class="heatmap" id="heatmap-cohort"></table></div>
+    </div>
+    <div class="panel">
+      <h3>Average retention curve (mature cohorts)</h3>
+      <div class="chart-wrap short"><canvas id="chart-ret-curve"></canvas></div>
+    </div>
+  </section>
+
+  <!-- ============ MARKETING ============ -->
+  <section class="section" id="marketing">
+    <div class="section-head">
+      <h2>Marketing</h2>
+      <p>Discount impact on margin, and acquisition-channel efficiency.</p>
+    </div>
+    <div class="panel">
+      <h3>Discount level vs. revenue &amp; margin</h3>
+      <div class="chart-wrap"><canvas id="chart-mkt-discount"></canvas></div>
+      <div class="finding">
+        <span class="tag">Finding —</span> orders discounted 26–40% run
+        <b id="find-mkt-gap">–</b> margin points below full-price orders
+        (<b id="find-mkt-rel">–</b> relatively lower), while contributing a modest share of total revenue.
+        <span class="tag" style="margin-left:6px;">Recommendation —</span> cap discretionary discounts above 25% to
+        high-LTV or at-risk customers specifically, rather than broad promotions, in lower-margin categories.
+      </div>
+    </div>
+    <div class="panel">
+      <h3>Acquisition channel performance</h3>
+      <div class="sub">Average customer lifetime value vs. customer acquisition cost (CAC) per channel.</div>
+      <div class="chart-wrap"><canvas id="chart-mkt-channel"></canvas></div>
+    </div>
+    <div class="panel">
+      <table id="table-channel"><thead><tr><th>Channel</th><th>Customers</th><th>Avg orders</th><th>Avg LTV</th><th>CAC</th><th>LTV:CAC</th></tr></thead><tbody></tbody></table>
+    </div>
+  </section>
+
+  <!-- ============ OPERATIONS ============ -->
+  <section class="section" id="operations">
+    <div class="section-head">
+      <h2>Operations</h2>
+      <p>Return rates and delivery performance — where fulfillment quality is costing margin.</p>
+    </div>
+    <div class="kpi-grid">
+      <div class="kpi-tile"><span class="kpi-value" id="ops-kpi-return">–</span><span class="kpi-label">Overall return rate</span></div>
+      <div class="kpi-tile"><span class="kpi-value" id="ops-kpi-ontime">–</span><span class="kpi-label">Standard shipping on-time rate</span></div>
+      <div class="kpi-tile"><span class="kpi-value" id="ops-kpi-delayed-return">–</span><span class="kpi-label">Return rate, significantly delayed orders</span></div>
+      <div class="kpi-tile"><span class="kpi-value" id="ops-kpi-ontime-return">–</span><span class="kpi-label">Return rate, on-time orders</span></div>
+    </div>
+    <div class="two-col">
+      <div class="panel">
+        <h3>Return rate by category</h3>
+        <div class="chart-wrap"><canvas id="chart-ops-returns"></canvas></div>
+      </div>
+      <div class="panel">
+        <h3>Delivery performance by shipping method</h3>
+        <div class="chart-wrap"><canvas id="chart-ops-delivery"></canvas></div>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>Highest-return products <span style="font-weight:400;color:var(--text-soft);">(min. 40 units sold)</span></h3>
+      <table id="table-returns"><thead><tr><th>Product</th><th>Category</th><th>Units sold</th><th>Returned</th><th>Return rate</th></tr></thead><tbody></tbody></table>
+    </div>
+    <div class="finding">
+      <span class="tag">Finding —</span> Apparel &amp; Clothing and Footwear return at roughly double the platform
+      average, driven mostly by fit — and significantly delayed orders return at a noticeably higher rate than
+      on-time ones. <span class="tag" style="margin-left:6px;">Recommendation —</span> add size guidance / fit
+      quizzes on the highest-return apparel listings, and prioritize carrier reliability on Standard shipping, which
+      has the highest delay rate of the three tiers.
+    </div>
+  </section>
+
+</main>
+
+<script>
+const DATA = {
+ "kpis": {
+  "total_net_revenue": 9718090.91,
+  "total_orders": 31332,
+  "aov": 310.17,
+  "overall_margin_pct": 41.88,
+  "returning_customer_revenue_pct": 84.0,
+  "overall_clv": 1943.62,
+  "repeat_purchase_rate_pct": 75.84,
+  "churn_rate_180d_pct": 68.94,
+  "overall_return_rate_pct": 5.03,
+  "top2_segment_revenue_share_pct": 77.5,
+  "top2_segment_customer_share_pct": 40.0,
+  "margin_point_gap_high_vs_full": 26.9,
+  "margin_relative_pct_lower": 57.3
+ },
+ "monthly_revenue": [
+  {
+   "month": "2023-01",
+   "net_revenue": 53886.52,
+   "orders": 160
+  },
+  {
+   "month": "2023-02",
+   "net_revenue": 54450.48,
+   "orders": 189
+  },
+  {
+   "month": "2023-03",
+   "net_revenue": 82292.9,
+   "orders": 244
+  },
+  {
+   "month": "2023-04",
+   "net_revenue": 94803.71,
+   "orders": 307
+  },
+  {
+   "month": "2023-05",
+   "net_revenue": 102652.66,
+   "orders": 360
+  },
+  {
+   "month": "2023-06",
+   "net_revenue": 134799.15,
+   "orders": 397
+  },
+  {
+   "month": "2023-07",
+   "net_revenue": 142391.81,
+   "orders": 481
+  },
+  {
+   "month": "2023-08",
+   "net_revenue": 159770.24,
+   "orders": 526
+  },
+  {
+   "month": "2023-09",
+   "net_revenue": 152094.92,
+   "orders": 522
+  },
+  {
+   "month": "2023-10",
+   "net_revenue": 179649.59,
+   "orders": 603
+  },
+  {
+   "month": "2023-11",
+   "net_revenue": 201526.49,
+   "orders": 660
+  },
+  {
+   "month": "2023-12",
+   "net_revenue": 227123.97,
+   "orders": 679
+  },
+  {
+   "month": "2024-01",
+   "net_revenue": 222538.03,
+   "orders": 699
+  },
+  {
+   "month": "2024-02",
+   "net_revenue": 210771.21,
+   "orders": 684
+  },
+  {
+   "month": "2024-03",
+   "net_revenue": 217961.73,
+   "orders": 698
+  },
+  {
+   "month": "2024-04",
+   "net_revenue": 227844.77,
+   "orders": 739
+  },
+  {
+   "month": "2024-05",
+   "net_revenue": 226312.51,
+   "orders": 778
+  },
+  {
+   "month": "2024-06",
+   "net_revenue": 231008.24,
+   "orders": 768
+  },
+  {
+   "month": "2024-07",
+   "net_revenue": 251659.66,
+   "orders": 851
+  },
+  {
+   "month": "2024-08",
+   "net_revenue": 228605.35,
+   "orders": 789
+  },
+  {
+   "month": "2024-09",
+   "net_revenue": 250390.46,
+   "orders": 825
+  },
+  {
+   "month": "2024-10",
+   "net_revenue": 249872.96,
+   "orders": 816
+  },
+  {
+   "month": "2024-11",
+   "net_revenue": 257824.52,
+   "orders": 885
+  },
+  {
+   "month": "2024-12",
+   "net_revenue": 294191.8,
+   "orders": 893
+  },
+  {
+   "month": "2025-01",
+   "net_revenue": 236557.32,
+   "orders": 786
+  },
+  {
+   "month": "2025-02",
+   "net_revenue": 239649.25,
+   "orders": 724
+  },
+  {
+   "month": "2025-03",
+   "net_revenue": 254469.92,
+   "orders": 826
+  },
+  {
+   "month": "2025-04",
+   "net_revenue": 247281.23,
+   "orders": 783
+  },
+  {
+   "month": "2025-05",
+   "net_revenue": 267348.31,
+   "orders": 857
+  },
+  {
+   "month": "2025-06",
+   "net_revenue": 249955.38,
+   "orders": 799
+  },
+  {
+   "month": "2025-07",
+   "net_revenue": 255890.26,
+   "orders": 831
+  },
+  {
+   "month": "2025-08",
+   "net_revenue": 263919.63,
+   "orders": 826
+  },
+  {
+   "month": "2025-09",
+   "net_revenue": 221673.57,
+   "orders": 725
+  },
+  {
+   "month": "2025-10",
+   "net_revenue": 268320.36,
+   "orders": 845
+  },
+  {
+   "month": "2025-11",
+   "net_revenue": 315425.9,
+   "orders": 1000
+  },
+  {
+   "month": "2025-12",
+   "net_revenue": 335256.57,
+   "orders": 1074
+  },
+  {
+   "month": "2026-01",
+   "net_revenue": 277984.1,
+   "orders": 860
+  },
+  {
+   "month": "2026-02",
+   "net_revenue": 213088.68,
+   "orders": 749
+  },
+  {
+   "month": "2026-03",
+   "net_revenue": 276382.82,
+   "orders": 850
+  },
+  {
+   "month": "2026-04",
+   "net_revenue": 255834.17,
+   "orders": 815
+  },
+  {
+   "month": "2026-05",
+   "net_revenue": 283899.37,
+   "orders": 878
+  },
+  {
+   "month": "2026-06",
+   "net_revenue": 226137.55,
+   "orders": 769
+  },
+  {
+   "month": "2026-07",
+   "net_revenue": 304644.99,
+   "orders": 894
+  },
+  {
+   "month": "2026-08",
+   "net_revenue": 269947.85,
+   "orders": 888
+  }
+ ],
+ "category_revenue": [
+  {
+   "category": "Furniture",
+   "net_revenue": 3110686.62,
+   "profit": 1256608.48,
+   "margin_pct": 40.4
+  },
+  {
+   "category": "Electronics",
+   "net_revenue": 1885729.39,
+   "profit": 581417.7,
+   "margin_pct": 30.83
+  },
+  {
+   "category": "Sports & Outdoors",
+   "net_revenue": 1161830.73,
+   "profit": 525413.97,
+   "margin_pct": 45.22
+  },
+  {
+   "category": "Home & Kitchen",
+   "net_revenue": 970308.48,
+   "profit": 418283.33,
+   "margin_pct": 43.11
+  },
+  {
+   "category": "Footwear",
+   "net_revenue": 907277.01,
+   "profit": 459392.78,
+   "margin_pct": 50.63
+  },
+  {
+   "category": "Apparel & Clothing",
+   "net_revenue": 468032.59,
+   "profit": 254788.36,
+   "margin_pct": 54.44
+  },
+  {
+   "category": "Beauty & Personal Care",
+   "net_revenue": 384360.36,
+   "profit": 225469.13,
+   "margin_pct": 58.66
+  },
+  {
+   "category": "Toys & Games",
+   "net_revenue": 356691.17,
+   "profit": 167170.85,
+   "margin_pct": 46.87
+  },
+  {
+   "category": "Grocery & Gourmet",
+   "net_revenue": 265007.8,
+   "profit": 95822.91,
+   "margin_pct": 36.16
+  },
+  {
+   "category": "Books & Media",
+   "net_revenue": 208166.76,
+   "profit": 85603.36,
+   "margin_pct": 41.12
+  }
+ ],
+ "rfm_segments": [
+  {
+   "segment": "Loyal Customers",
+   "customers": 1114,
+   "avg_clv": 3522.06,
+   "total_revenue": 3923572.23,
+   "pct_customers": 22.3,
+   "pct_revenue": 40.4
+  },
+  {
+   "segment": "Champions",
+   "customers": 886,
+   "avg_clv": 4069.81,
+   "total_revenue": 3605856.05,
+   "pct_customers": 17.7,
+   "pct_revenue": 37.1
+  },
+  {
+   "segment": "Need Attention",
+   "customers": 970,
+   "avg_clv": 992.86,
+   "total_revenue": 963070.0,
+   "pct_customers": 19.4,
+   "pct_revenue": 9.9
+  },
+  {
+   "segment": "At Risk",
+   "customers": 373,
+   "avg_clv": 1231.3,
+   "total_revenue": 459274.84,
+   "pct_customers": 7.5,
+   "pct_revenue": 4.7
+  },
+  {
+   "segment": "Hibernating",
+   "customers": 962,
+   "avg_clv": 446.2,
+   "total_revenue": 429248.22,
+   "pct_customers": 19.2,
+   "pct_revenue": 4.4
+  },
+  {
+   "segment": "New / Promising",
+   "customers": 695,
+   "avg_clv": 484.99,
+   "total_revenue": 337069.57,
+   "pct_customers": 13.9,
+   "pct_revenue": 3.5
+  }
+ ],
+ "cohort_heatmap": [
+  {
+   "cohort": "2023-01",
+   "values": [
+    100.0,
+    32.5,
+    29.3,
+    36.6,
+    34.1,
+    25.2,
+    31.7,
+    25.2,
+    18.7,
+    21.1
+   ]
+  },
+  {
+   "cohort": "2023-04",
+   "values": [
+    100.0,
+    33.3,
+    32.4,
+    35.2,
+    40.0,
+    37.1,
+    32.4,
+    32.4,
+    31.4,
+    31.4
+   ]
+  },
+  {
+   "cohort": "2023-07",
+   "values": [
+    100.0,
+    35.7,
+    38.1,
+    37.3,
+    30.2,
+    30.2,
+    34.1,
+    31.0,
+    27.8,
+    29.4
+   ]
+  },
+  {
+   "cohort": "2023-10",
+   "values": [
+    100.0,
+    32.3,
+    36.1,
+    35.3,
+    27.1,
+    30.1,
+    34.6,
+    24.1,
+    26.3,
+    24.1
+   ]
+  },
+  {
+   "cohort": "2024-01",
+   "values": [
+    100.0,
+    30.3,
+    29.4,
+    29.4,
+    28.6,
+    30.3,
+    28.6,
+    31.1,
+    26.9,
+    21.0
+   ]
+  },
+  {
+   "cohort": "2024-04",
+   "values": [
+    100.0,
+    32.3,
+    40.3,
+    34.7,
+    26.6,
+    35.5,
+    31.5,
+    33.1,
+    33.1,
+    30.6
+   ]
+  },
+  {
+   "cohort": "2024-07",
+   "values": [
+    100.0,
+    34.6,
+    27.9,
+    25.7,
+    27.9,
+    30.1,
+    24.3,
+    19.1,
+    18.4,
+    16.9
+   ]
+  },
+  {
+   "cohort": "2024-10",
+   "values": [
+    100.0,
+    42.2,
+    30.5,
+    30.5,
+    28.1,
+    25.0,
+    28.1,
+    26.6,
+    22.7,
+    23.4
+   ]
+  },
+  {
+   "cohort": "2025-01",
+   "values": [
+    100.0,
+    31.3,
+    27.3,
+    30.3,
+    29.3,
+    22.2,
+    21.2,
+    29.3,
+    28.3,
+    26.3
+   ]
+  },
+  {
+   "cohort": "2025-04",
+   "values": [
+    100.0,
+    35.6,
+    35.6,
+    37.8,
+    37.0,
+    27.4,
+    29.6,
+    39.3,
+    35.6,
+    25.2
+   ]
+  },
+  {
+   "cohort": "2025-07",
+   "values": [
+    100.0,
+    27.9,
+    32.7,
+    40.4,
+    43.3,
+    43.3,
+    27.9,
+    26.9,
+    31.7,
+    23.1
+   ]
+  },
+  {
+   "cohort": "2025-10",
+   "values": [
+    100.0,
+    37.4,
+    40.4,
+    32.3,
+    24.2,
+    26.3,
+    31.3,
+    31.3,
+    23.2,
+    28.3
+   ]
+  }
+ ],
+ "avg_retention_curve": [
+  100.0,
+  33.8,
+  33.1,
+  33.2,
+  31.1,
+  30.3,
+  28.6,
+  26.8,
+  25.8
+ ],
+ "discount_bands": [
+  {
+   "band": "0% (full price)",
+   "net_revenue": 4704881.22,
+   "profit": 2206068.06,
+   "items": 25428,
+   "margin_pct": 46.89
+  },
+  {
+   "band": "1-10%",
+   "net_revenue": 2514107.99,
+   "profit": 1100997.65,
+   "items": 14644,
+   "margin_pct": 43.79
+  },
+  {
+   "band": "11-25%",
+   "net_revenue": 1735413.89,
+   "profit": 609974.46,
+   "items": 11659,
+   "margin_pct": 35.15
+  },
+  {
+   "band": "26-40%",
+   "net_revenue": 763687.81,
+   "profit": 152930.7,
+   "items": 6070,
+   "margin_pct": 20.03
+  }
+ ],
+ "channel_performance": [
+  {
+   "acquisition_channel": "Referral",
+   "customers": 427,
+   "avg_orders": 7.96,
+   "avg_ltv": 2353.1,
+   "pct_one_and_done": 14.3,
+   "cac": 55.39,
+   "ltv_cac_ratio": 42.48
+  },
+  {
+   "acquisition_channel": "Organic Search",
+   "customers": 1727,
+   "avg_orders": 6.9,
+   "avg_ltv": 2147.63,
+   "pct_one_and_done": 20.6,
+   "cac": 41.14,
+   "ltv_cac_ratio": 52.2
+  },
+  {
+   "acquisition_channel": "Direct",
+   "customers": 1008,
+   "avg_orders": 6.39,
+   "avg_ltv": 2026.06,
+   "pct_one_and_done": 22.4,
+   "cac": NaN,
+   "ltv_cac_ratio": NaN
+  },
+  {
+   "acquisition_channel": "Email Marketing",
+   "customers": 609,
+   "avg_orders": 6.78,
+   "avg_ltv": 1942.1,
+   "pct_one_and_done": 23.0,
+   "cac": 71.6,
+   "ltv_cac_ratio": 27.12
+  },
+  {
+   "acquisition_channel": "Paid Social",
+   "customers": 1229,
+   "avg_orders": 4.43,
+   "avg_ltv": 1447.8,
+   "pct_one_and_done": 34.6,
+   "cac": 309.01,
+   "ltv_cac_ratio": 4.69
+  }
+ ],
+ "return_rate_by_category": [
+  {
+   "category": "Apparel & Clothing",
+   "items_sold": 5728,
+   "returned": 626,
+   "return_rate_pct": 10.93
+  },
+  {
+   "category": "Footwear",
+   "items_sold": 5935,
+   "returned": 605,
+   "return_rate_pct": 10.19
+  },
+  {
+   "category": "Furniture",
+   "items_sold": 5980,
+   "returned": 433,
+   "return_rate_pct": 7.24
+  },
+  {
+   "category": "Electronics",
+   "items_sold": 5242,
+   "returned": 265,
+   "return_rate_pct": 5.06
+  },
+  {
+   "category": "Sports & Outdoors",
+   "items_sold": 5689,
+   "returned": 251,
+   "return_rate_pct": 4.41
+  },
+  {
+   "category": "Home & Kitchen",
+   "items_sold": 5709,
+   "returned": 223,
+   "return_rate_pct": 3.91
+  },
+  {
+   "category": "Toys & Games",
+   "items_sold": 6066,
+   "returned": 210,
+   "return_rate_pct": 3.46
+  },
+  {
+   "category": "Beauty & Personal Care",
+   "items_sold": 5747,
+   "returned": 139,
+   "return_rate_pct": 2.42
+  },
+  {
+   "category": "Books & Media",
+   "items_sold": 6067,
+   "returned": 100,
+   "return_rate_pct": 1.65
+  },
+  {
+   "category": "Grocery & Gourmet",
+   "items_sold": 5638,
+   "returned": 58,
+   "return_rate_pct": 1.03
+  }
+ ],
+ "top_return_products": [
+  {
+   "product_name": "Denim Jacket Deluxe",
+   "category": "Apparel & Clothing",
+   "units_sold": 107,
+   "returned": 19,
+   "return_rate_pct": 17.8
+  },
+  {
+   "product_name": "Cotton T-Shirt Deluxe",
+   "category": "Apparel & Clothing",
+   "units_sold": 119,
+   "returned": 20,
+   "return_rate_pct": 16.8
+  },
+  {
+   "product_name": "Chino Shorts Max",
+   "category": "Apparel & Clothing",
+   "units_sold": 113,
+   "returned": 19,
+   "return_rate_pct": 16.8
+  },
+  {
+   "product_name": "Dress Shoes Classic",
+   "category": "Footwear",
+   "units_sold": 204,
+   "returned": 33,
+   "return_rate_pct": 16.2
+  },
+  {
+   "product_name": "Wool Sweater Classic",
+   "category": "Apparel & Clothing",
+   "units_sold": 127,
+   "returned": 20,
+   "return_rate_pct": 15.7
+  },
+  {
+   "product_name": "Rain Jacket Pro",
+   "category": "Apparel & Clothing",
+   "units_sold": 125,
+   "returned": 19,
+   "return_rate_pct": 15.2
+  },
+  {
+   "product_name": "Summer Dress Plus",
+   "category": "Apparel & Clothing",
+   "units_sold": 115,
+   "returned": 17,
+   "return_rate_pct": 14.8
+  },
+  {
+   "product_name": "Running Shoes Pro",
+   "category": "Footwear",
+   "units_sold": 215,
+   "returned": 31,
+   "return_rate_pct": 14.4
+  }
+ ],
+ "delivery_by_shipping_method": [
+  {
+   "shipping_method": "Express",
+   "orders": 7815,
+   "avg_days": 2.85,
+   "pct_on_time": 63.4,
+   "pct_delayed": 4.6
+  },
+  {
+   "shipping_method": "Same-Day",
+   "orders": 3094,
+   "avg_days": 1.18,
+   "pct_on_time": 65.0,
+   "pct_delayed": 2.5
+  },
+  {
+   "shipping_method": "Standard",
+   "orders": 20423,
+   "avg_days": 6.53,
+   "pct_on_time": 61.1,
+   "pct_delayed": 7.1
+  }
+ ],
+ "return_rate_on_time_pct": 4.94,
+ "return_rate_delayed_pct": 6.55,
+ "new_customer_revenue_pct": 16.0,
+ "returning_customer_revenue_pct": 84.0
+};
+
+const BLUES5 = ['#0A2540','#145DA6','#1B6FC2','#3E82C9','#8FBEE8'];
+Chart.defaults.font.family = "'IBM Plex Sans', sans-serif";
+Chart.defaults.color = '#5A7290';
+Chart.defaults.borderColor = '#E3EEFC';
+
+function fmtMoney(v, compact){
+  if(compact){
+    if(Math.abs(v)>=1e6) return '$'+(v/1e6).toFixed(2)+'M';
+    if(Math.abs(v)>=1e3) return '$'+(v/1e3).toFixed(0)+'K';
+  }
+  return '$'+Number(v).toLocaleString(undefined,{maximumFractionDigits:2});
+}
+function fmtNum(v){ return Number(v).toLocaleString(); }
+function fmtPct(v){ return v+'%'; }
+
+function fillText(id, text){ const el = document.getElementById(id); if(el) el.textContent = text; }
+
+// ---------------- KPIs ----------------
+function populateKpis(){
+  const k = DATA.kpis;
+  fillText('kpi-total-revenue', fmtMoney(k.total_net_revenue, true));
+  fillText('kpi-total-orders', fmtNum(k.total_orders));
+  fillText('kpi-aov', fmtMoney(k.aov));
+  fillText('kpi-margin', fmtPct(k.overall_margin_pct));
+  fillText('kpi-repeat', fmtPct(k.repeat_purchase_rate_pct));
+  fillText('kpi-clv', fmtMoney(k.overall_clv));
+  fillText('kpi-returning-rev', fmtPct(k.returning_customer_revenue_pct));
+  fillText('find-ov-cust-pct', k.top2_segment_customer_share_pct+'%');
+  fillText('find-ov-rev-pct', k.top2_segment_revenue_share_pct+'%');
+
+  fillText('rev-kpi-total', fmtMoney(k.total_net_revenue, true));
+  fillText('rev-kpi-aov', fmtMoney(k.aov));
+  fillText('rev-kpi-margin', fmtPct(k.overall_margin_pct));
+  fillText('rev-kpi-topcat', DATA.category_revenue[0].category);
+
+  fillText('cust-kpi-clv', fmtMoney(k.overall_clv));
+  fillText('cust-kpi-repeat', fmtPct(k.repeat_purchase_rate_pct));
+  fillText('cust-kpi-returning', fmtPct(DATA.returning_customer_revenue_pct));
+  fillText('cust-kpi-new', fmtPct(DATA.new_customer_revenue_pct));
+
+  fillText('ret-kpi-m1', fmtPct(DATA.avg_retention_curve[1]));
+  fillText('ret-kpi-m3', fmtPct(DATA.avg_retention_curve[3]));
+  fillText('ret-kpi-m6', fmtPct(DATA.avg_retention_curve[6]));
+  fillText('ret-kpi-churn', fmtPct(k.churn_rate_180d_pct));
+
+  fillText('find-mkt-gap', k.margin_point_gap_high_vs_full+' pts');
+  fillText('find-mkt-rel', k.margin_relative_pct_lower+'%');
+
+  fillText('ops-kpi-return', fmtPct(k.overall_return_rate_pct));
+  const std = DATA.delivery_by_shipping_method.find(d=>d.shipping_method==='Standard');
+  fillText('ops-kpi-ontime', fmtPct(std.pct_on_time));
+  fillText('ops-kpi-delayed-return', fmtPct(DATA.return_rate_delayed_pct));
+  fillText('ops-kpi-ontime-return', fmtPct(DATA.return_rate_on_time_pct));
+}
+
+// ---------------- Charts (lazy init) ----------------
+const charts = {};
+
+function lineTrend(canvasId){
+  const labels = DATA.monthly_revenue.map(d=>d.month);
+  const values = DATA.monthly_revenue.map(d=>d.net_revenue);
+  return new Chart(document.getElementById(canvasId), {
+    type:'line',
+    data:{labels, datasets:[{data:values, borderColor:'#1B6FC2', backgroundColor:'rgba(27,111,194,0.08)',
+      fill:true, tension:0.3, pointRadius:0, borderWidth:2.2}]},
+    options:{responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false}, tooltip:{callbacks:{label:(c)=>fmtMoney(c.parsed.y)}}},
+      scales:{ x:{ticks:{maxTicksLimit:10}}, y:{ticks:{callback:(v)=>fmtMoney(v, true)}} } }
+  });
+}
+
+function initOverview(){
+  charts.ovTrend = lineTrend('chart-overview-trend');
+}
+
+function initRevenue(){
+  charts.revTrend = lineTrend('chart-rev-trend');
+  const cats = DATA.category_revenue;
+  charts.revCat = new Chart(document.getElementById('chart-rev-category'), {
+    type:'bar',
+    data:{labels:cats.map(c=>c.category),
+      datasets:[{label:'Net revenue', data:cats.map(c=>c.net_revenue), backgroundColor:'#1B6FC2',
+        yAxisID:'y'}]},
+    options:{indexAxis:'y', responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false}, tooltip:{callbacks:{
+        label:(c)=>{const row=cats[c.dataIndex]; return `${fmtMoney(row.net_revenue,true)} · ${row.margin_pct}% margin`;}
+      }}},
+      scales:{x:{ticks:{callback:(v)=>fmtMoney(v,true)}}}}
+  });
+}
+
+function initCustomers(){
+  charts.custNewRet = new Chart(document.getElementById('chart-cust-newret'), {
+    type:'doughnut',
+    data:{labels:['New (1st order)','Returning (2nd+)'],
+      datasets:[{data:[DATA.new_customer_revenue_pct, DATA.returning_customer_revenue_pct],
+        backgroundColor:['#8FBEE8','#145DA6'], borderWidth:0}]},
+    options:{responsive:true, maintainAspectRatio:false, cutout:'62%',
+      plugins:{legend:{position:'bottom', labels:{boxWidth:12, font:{size:11}}},
+        tooltip:{callbacks:{label:(c)=>c.label+': '+c.parsed+'%'}}}}
+  });
+
+  const seg = DATA.rfm_segments;
+  charts.custRfm = new Chart(document.getElementById('chart-cust-rfm'), {
+    type:'bar',
+    data:{labels:seg.map(s=>s.segment),
+      datasets:[
+        {label:'% of customers', data:seg.map(s=>s.pct_customers), backgroundColor:'#8FBEE8'},
+        {label:'% of revenue', data:seg.map(s=>s.pct_revenue), backgroundColor:'#145DA6'},
+      ]},
+    options:{indexAxis:'y', responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom', labels:{boxWidth:12, font:{size:11}}}},
+      scales:{x:{ticks:{callback:(v)=>v+'%'}}}}
+  });
+
+  const tbody = document.querySelector('#table-rfm tbody');
+  seg.forEach(s=>{
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${s.segment}</td><td>${fmtNum(s.customers)}</td><td>${s.pct_customers}%</td><td>${fmtMoney(s.avg_clv)}</td><td>${s.pct_revenue}%</td>`;
+    tbody.appendChild(tr);
+  });
+}
+
+function blueFor(pct){
+  if(pct===null || pct===undefined) return '#F4F8FD';
+  const t = Math.min(1, pct/100);
+  // interpolate between light blue and navy
+  const c1=[227,238,252], c2=[10,37,64];
+  const c = c1.map((v,i)=> Math.round(v + (c2[i]-v)*t));
+  return `rgb(${c[0]},${c[1]},${c[2]})`;
+}
+function textFor(pct){ return (pct!==null && pct>=45) ? '#FFFFFF' : '#0A2540'; }
+
+function initRetention(){
+  const wrap = DATA.cohort_heatmap;
+  const months = wrap[0].values.length;
+  const table = document.getElementById('heatmap-cohort');
+  let thead = '<tr><th class="rowhead">Cohort</th>';
+  for(let i=0;i<months;i++) thead += `<th>M${i}</th>`;
+  thead += '</tr>';
+  let rows = '';
+  wrap.forEach(row=>{
+    rows += `<tr><td class="rowhead">${row.cohort}</td>`;
+    row.values.forEach(v=>{
+      const bg = blueFor(v); const fg = textFor(v);
+      rows += `<td><div class="hm-cell" style="background:${bg};color:${fg};">${v===null?'':v+'%'}</div></td>`;
+    });
+    rows += '</tr>';
+  });
+  table.innerHTML = '<thead>'+thead+'</thead><tbody>'+rows+'</tbody>';
+
+  const curve = DATA.avg_retention_curve;
+  charts.retCurve = new Chart(document.getElementById('chart-ret-curve'), {
+    type:'line',
+    data:{labels:curve.map((_,i)=>'Month '+i),
+      datasets:[{data:curve, borderColor:'#145DA6', backgroundColor:'rgba(20,93,166,0.08)', fill:true, tension:0.25, pointRadius:3, pointBackgroundColor:'#145DA6'}]},
+    options:{responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:(c)=>c.parsed.y+'% retained'}}},
+      scales:{y:{min:0,max:100,ticks:{callback:(v)=>v+'%'}}}}
+  });
+}
+
+function initMarketing(){
+  const bands = DATA.discount_bands;
+  charts.mktDiscount = new Chart(document.getElementById('chart-mkt-discount'), {
+    data:{labels:bands.map(b=>b.band),
+      datasets:[
+        {type:'bar', label:'Net revenue', data:bands.map(b=>b.net_revenue), backgroundColor:'#8FBEE8', order:2, yAxisID:'y'},
+        {type:'line', label:'Avg margin %', data:bands.map(b=>b.margin_pct), borderColor:'#0A2540', backgroundColor:'#0A2540',
+         yAxisID:'y1', tension:0.2, pointRadius:4, borderWidth:2.5, order:1},
+      ]},
+    options:{responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom', labels:{boxWidth:12,font:{size:11}}}},
+      scales:{
+        y:{position:'left', ticks:{callback:(v)=>fmtMoney(v,true)}, title:{display:true,text:'Net revenue'}},
+        y1:{position:'right', min:0, max:60, grid:{drawOnChartArea:false}, ticks:{callback:(v)=>v+'%'}, title:{display:true,text:'Margin %'}},
+      }}
+  });
+
+  const chan = DATA.channel_performance;
+  charts.mktChannel = new Chart(document.getElementById('chart-mkt-channel'), {
+    type:'bar',
+    data:{labels:chan.map(c=>c.acquisition_channel),
+      datasets:[
+        {label:'Avg LTV', data:chan.map(c=>c.avg_ltv), backgroundColor:'#145DA6'},
+        {label:'CAC', data:chan.map(c=>c.cac||0), backgroundColor:'#8FBEE8'},
+      ]},
+    options:{responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom', labels:{boxWidth:12,font:{size:11}}}},
+      scales:{y:{ticks:{callback:(v)=>fmtMoney(v,true)}}}}
+  });
+
+  const tbody = document.querySelector('#table-channel tbody');
+  chan.forEach(c=>{
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${c.acquisition_channel}</td><td>${fmtNum(c.customers)}</td><td>${c.avg_orders}</td><td>${fmtMoney(c.avg_ltv)}</td><td>${c.cac?fmtMoney(c.cac):'n/a (unpaid)'}</td><td>${c.ltv_cac_ratio||'–'}</td>`;
+    tbody.appendChild(tr);
+  });
+}
+
+function initOperations(){
+  const cats = DATA.return_rate_by_category;
+  charts.opsReturns = new Chart(document.getElementById('chart-ops-returns'), {
+    type:'bar',
+    data:{labels:cats.map(c=>c.category), datasets:[{data:cats.map(c=>c.return_rate_pct), backgroundColor:'#1B6FC2'}]},
+    options:{indexAxis:'y', responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false}, tooltip:{callbacks:{label:(c)=>c.parsed.x+'% return rate'}}},
+      scales:{x:{ticks:{callback:(v)=>v+'%'}}}}
+  });
+
+  const ship = DATA.delivery_by_shipping_method;
+  charts.opsDelivery = new Chart(document.getElementById('chart-ops-delivery'), {
+    type:'bar',
+    data:{labels:ship.map(s=>s.shipping_method),
+      datasets:[
+        {label:'% on time', data:ship.map(s=>s.pct_on_time), backgroundColor:'#145DA6'},
+        {label:'% significantly delayed', data:ship.map(s=>s.pct_significantly_delayed), backgroundColor:'#8FBEE8'},
+      ]},
+    options:{responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{position:'bottom', labels:{boxWidth:12,font:{size:11}}}},
+      scales:{y:{ticks:{callback:(v)=>v+'%'}}}}
+  });
+
+  const tbody = document.querySelector('#table-returns tbody');
+  DATA.top_return_products.forEach(p=>{
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${p.product_name}</td><td>${p.category}</td><td>${fmtNum(p.units_sold)}</td><td>${fmtNum(p.returned)}</td><td>${p.return_rate_pct}%</td>`;
+    tbody.appendChild(tr);
+  });
+}
+
+const initFns = { overview:initOverview, revenue:initRevenue, customers:initCustomers,
+                   retention:initRetention, marketing:initMarketing, operations:initOperations };
+const initialized = {};
+
+document.querySelectorAll('.nav-item').forEach(item=>{
+  item.addEventListener('click', ()=>{
+    const target = item.dataset.section;
+    document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+    document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+    item.classList.add('active');
+    document.getElementById(target).classList.add('active');
+    if(!initialized[target]){ initFns[target](); initialized[target] = true; }
+  });
+});
+
+populateKpis();
+initOverview();
+initialized.overview = true;
+</script>
+</body>
+</html>

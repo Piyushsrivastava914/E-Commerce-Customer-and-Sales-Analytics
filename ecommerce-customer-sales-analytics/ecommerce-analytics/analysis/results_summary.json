@@ -1,0 +1,357 @@
+{
+  "total_net_revenue": 9718090.91,
+  "total_orders": 31332,
+  "aov": 310.17,
+  "overall_margin_pct": 41.88,
+  "peak_month": "2025-12",
+  "peak_month_revenue": 335256.57,
+  "category_revenue": [
+    {
+      "category": "Furniture",
+      "net_revenue": 3110686.62,
+      "profit": 1256608.48,
+      "margin_pct": 40.4
+    },
+    {
+      "category": "Electronics",
+      "net_revenue": 1885729.39,
+      "profit": 581417.7,
+      "margin_pct": 30.83
+    },
+    {
+      "category": "Sports & Outdoors",
+      "net_revenue": 1161830.73,
+      "profit": 525413.97,
+      "margin_pct": 45.22
+    },
+    {
+      "category": "Home & Kitchen",
+      "net_revenue": 970308.48,
+      "profit": 418283.33,
+      "margin_pct": 43.11
+    },
+    {
+      "category": "Footwear",
+      "net_revenue": 907277.01,
+      "profit": 459392.78,
+      "margin_pct": 50.63
+    },
+    {
+      "category": "Apparel & Clothing",
+      "net_revenue": 468032.59,
+      "profit": 254788.36,
+      "margin_pct": 54.44
+    },
+    {
+      "category": "Beauty & Personal Care",
+      "net_revenue": 384360.36,
+      "profit": 225469.13,
+      "margin_pct": 58.66
+    },
+    {
+      "category": "Toys & Games",
+      "net_revenue": 356691.17,
+      "profit": 167170.85,
+      "margin_pct": 46.87
+    },
+    {
+      "category": "Grocery & Gourmet",
+      "net_revenue": 265007.8,
+      "profit": 95822.91,
+      "margin_pct": 36.16
+    },
+    {
+      "category": "Books & Media",
+      "net_revenue": 208166.76,
+      "profit": 85603.36,
+      "margin_pct": 41.12
+    }
+  ],
+  "new_customer_revenue_pct": 16.0,
+  "returning_customer_revenue_pct": 84.0,
+  "rfm_segments": [
+    {
+      "segment": "Loyal Customers",
+      "customers": 1114,
+      "avg_clv": 3522.06,
+      "total_revenue": 3923572.23,
+      "pct_customers": 22.3,
+      "pct_revenue": 40.4
+    },
+    {
+      "segment": "Champions",
+      "customers": 886,
+      "avg_clv": 4069.81,
+      "total_revenue": 3605856.05,
+      "pct_customers": 17.7,
+      "pct_revenue": 37.1
+    },
+    {
+      "segment": "Need Attention",
+      "customers": 970,
+      "avg_clv": 992.86,
+      "total_revenue": 963070.0,
+      "pct_customers": 19.4,
+      "pct_revenue": 9.9
+    },
+    {
+      "segment": "At Risk",
+      "customers": 373,
+      "avg_clv": 1231.3,
+      "total_revenue": 459274.84,
+      "pct_customers": 7.5,
+      "pct_revenue": 4.7
+    },
+    {
+      "segment": "Hibernating",
+      "customers": 962,
+      "avg_clv": 446.2,
+      "total_revenue": 429248.22,
+      "pct_customers": 19.2,
+      "pct_revenue": 4.4
+    },
+    {
+      "segment": "New / Promising",
+      "customers": 695,
+      "avg_clv": 484.99,
+      "total_revenue": 337069.57,
+      "pct_customers": 13.9,
+      "pct_revenue": 3.5
+    }
+  ],
+  "overall_clv": 1943.62,
+  "repeat_purchase_rate_pct": 75.84,
+  "top2_segment_revenue_share_pct": 77.5,
+  "top2_segment_customer_share_pct": 40.0,
+  "cohort_month1_retention_pct": 33.8,
+  "cohort_month3_retention_pct": 33.2,
+  "cohort_month6_retention_pct": 28.6,
+  "churn_rate_180d_pct": 68.94,
+  "discount_bands": [
+    {
+      "band": "0% (full price)",
+      "net_revenue": 4704881.22,
+      "profit": 2206068.06,
+      "items": 25428,
+      "margin_pct": 46.89
+    },
+    {
+      "band": "1-10%",
+      "net_revenue": 2514107.99,
+      "profit": 1100997.65,
+      "items": 14644,
+      "margin_pct": 43.79
+    },
+    {
+      "band": "11-25%",
+      "net_revenue": 1735413.89,
+      "profit": 609974.46,
+      "items": 11659,
+      "margin_pct": 35.15
+    },
+    {
+      "band": "26-40%",
+      "net_revenue": 763687.81,
+      "profit": 152930.7,
+      "items": 6070,
+      "margin_pct": 20.03
+    }
+  ],
+  "margin_full_price": 46.89,
+  "margin_high_discount": 20.03,
+  "margin_point_gap_high_vs_full": 26.9,
+  "margin_relative_pct_lower": 57.3,
+  "channel_performance": [
+    {
+      "acquisition_channel": "Referral",
+      "customers": 427,
+      "avg_orders": 7.96,
+      "avg_ltv": 2353.1,
+      "pct_one_and_done": 14.3,
+      "cac": 55.39,
+      "ltv_cac_ratio": 42.48
+    },
+    {
+      "acquisition_channel": "Organic Search",
+      "customers": 1727,
+      "avg_orders": 6.9,
+      "avg_ltv": 2147.63,
+      "pct_one_and_done": 20.6,
+      "cac": 41.14,
+      "ltv_cac_ratio": 52.2
+    },
+    {
+      "acquisition_channel": "Direct",
+      "customers": 1008,
+      "avg_orders": 6.39,
+      "avg_ltv": 2026.06,
+      "pct_one_and_done": 22.4,
+      "cac": NaN,
+      "ltv_cac_ratio": NaN
+    },
+    {
+      "acquisition_channel": "Email Marketing",
+      "customers": 609,
+      "avg_orders": 6.78,
+      "avg_ltv": 1942.1,
+      "pct_one_and_done": 23.0,
+      "cac": 71.6,
+      "ltv_cac_ratio": 27.12
+    },
+    {
+      "acquisition_channel": "Paid Social",
+      "customers": 1229,
+      "avg_orders": 4.43,
+      "avg_ltv": 1447.8,
+      "pct_one_and_done": 34.6,
+      "cac": 309.01,
+      "ltv_cac_ratio": 4.69
+    }
+  ],
+  "return_rate_by_category": [
+    {
+      "category": "Apparel & Clothing",
+      "items_sold": 5728,
+      "returned": 626,
+      "return_rate_pct": 10.93
+    },
+    {
+      "category": "Footwear",
+      "items_sold": 5935,
+      "returned": 605,
+      "return_rate_pct": 10.19
+    },
+    {
+      "category": "Furniture",
+      "items_sold": 5980,
+      "returned": 433,
+      "return_rate_pct": 7.24
+    },
+    {
+      "category": "Electronics",
+      "items_sold": 5242,
+      "returned": 265,
+      "return_rate_pct": 5.06
+    },
+    {
+      "category": "Sports & Outdoors",
+      "items_sold": 5689,
+      "returned": 251,
+      "return_rate_pct": 4.41
+    },
+    {
+      "category": "Home & Kitchen",
+      "items_sold": 5709,
+      "returned": 223,
+      "return_rate_pct": 3.91
+    },
+    {
+      "category": "Toys & Games",
+      "items_sold": 6066,
+      "returned": 210,
+      "return_rate_pct": 3.46
+    },
+    {
+      "category": "Beauty & Personal Care",
+      "items_sold": 5747,
+      "returned": 139,
+      "return_rate_pct": 2.42
+    },
+    {
+      "category": "Books & Media",
+      "items_sold": 6067,
+      "returned": 100,
+      "return_rate_pct": 1.65
+    },
+    {
+      "category": "Grocery & Gourmet",
+      "items_sold": 5638,
+      "returned": 58,
+      "return_rate_pct": 1.03
+    }
+  ],
+  "overall_return_rate_pct": 5.03,
+  "top_return_products": [
+    {
+      "product_name": "Denim Jacket Deluxe",
+      "category": "Apparel & Clothing",
+      "units_sold": 107,
+      "returned": 19,
+      "return_rate_pct": 17.8
+    },
+    {
+      "product_name": "Cotton T-Shirt Deluxe",
+      "category": "Apparel & Clothing",
+      "units_sold": 119,
+      "returned": 20,
+      "return_rate_pct": 16.8
+    },
+    {
+      "product_name": "Chino Shorts Max",
+      "category": "Apparel & Clothing",
+      "units_sold": 113,
+      "returned": 19,
+      "return_rate_pct": 16.8
+    },
+    {
+      "product_name": "Dress Shoes Classic",
+      "category": "Footwear",
+      "units_sold": 204,
+      "returned": 33,
+      "return_rate_pct": 16.2
+    },
+    {
+      "product_name": "Wool Sweater Classic",
+      "category": "Apparel & Clothing",
+      "units_sold": 127,
+      "returned": 20,
+      "return_rate_pct": 15.7
+    },
+    {
+      "product_name": "Rain Jacket Pro",
+      "category": "Apparel & Clothing",
+      "units_sold": 125,
+      "returned": 19,
+      "return_rate_pct": 15.2
+    },
+    {
+      "product_name": "Summer Dress Plus",
+      "category": "Apparel & Clothing",
+      "units_sold": 115,
+      "returned": 17,
+      "return_rate_pct": 14.8
+    },
+    {
+      "product_name": "Running Shoes Pro",
+      "category": "Footwear",
+      "units_sold": 215,
+      "returned": 31,
+      "return_rate_pct": 14.4
+    }
+  ],
+  "delivery_by_shipping_method": [
+    {
+      "shipping_method": "Express",
+      "orders": 7815,
+      "avg_days": 2.85,
+      "pct_on_time": 63.4,
+      "pct_delayed": 4.6
+    },
+    {
+      "shipping_method": "Same-Day",
+      "orders": 3094,
+      "avg_days": 1.18,
+      "pct_on_time": 65.0,
+      "pct_delayed": 2.5
+    },
+    {
+      "shipping_method": "Standard",
+      "orders": 20423,
+      "avg_days": 6.53,
+      "pct_on_time": 61.1,
+      "pct_delayed": 7.1
+    }
+  ],
+  "return_rate_on_time_pct": 4.94,
+  "return_rate_delayed_pct": 6.55
+}
